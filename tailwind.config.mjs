@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#1e3a5f',    // Navy Blue
-        secondary: '#d4a574',  // Gold
-        accent: '#f8e1e4',     // Soft Pink
+        primary: '#1e3a5f',
+        secondary: '#d4a574',
+        accent: '#f8e1e4',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
@@ -15,4 +15,4 @@ export default {
     },
   },
   plugins: [],
-  }
+}
