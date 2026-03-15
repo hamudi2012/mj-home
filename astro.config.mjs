@@ -2,8 +2,8 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  base: '/', // Ganti jadi '/mj-home/' kalau repo name beda
-  site: 'https://mj-shops.biz.id',
+  base: '/mj-home/', // 👈 SESUAIKAN DENGAN NAMA REPO
+  site: 'https://hamudi2012.github.io/mj-home/',
   integrations: [],
   vite: {
     plugins: [tailwindcss()],
