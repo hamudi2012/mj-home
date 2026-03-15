@@ -1,0 +1,29 @@
+---
+interface Props {
+  name: string;
+  icon: string;
+  desc: string;
+  link: string;
+  color: string; // Tailwind gradient class, e.g. "from-pink-500 to-rose-500"
+}
+
+const { name, icon, desc, link, color } = Astro.props;
+---
+
+<a 
+  href={link} 
+  class="card group block p-6 hover:-translate-y-1 transition duration-300"
+>
+  <div class={`w-14 h-14 rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition`}>
+    {icon}
+  </div>
+  <h3 class="font-heading font-semibold text-lg text-slate-800 mb-2 group-hover:text-primary transition">
+    {name}
+  </h3>
+  <p class="text-slate-500 text-sm leading-relaxed">
+    {desc}
+  </p>
+  <span class="inline-flex items-center gap-1 mt-4 text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition">
+    Jelajahi →
+  </span>
+</a>
