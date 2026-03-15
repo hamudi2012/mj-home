@@ -1,12 +1,9 @@
 import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
+import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  base: '/mj-home/', // 👈 SESUAIKAN DENGAN NAMA REPO
+  base: '/mj-home/',
   site: 'https://hamudi2012.github.io/mj-home/',
-  integrations: [],
-  vite: {
-    plugins: [tailwindcss()],
-  },
+  integrations: [tailwind()],
   output: 'static',
 });
