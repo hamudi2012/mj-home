@@ -1,0 +1,80 @@
+---
+const navItems = [
+  { name: '🛍️ Shops', href: '/shops' },
+  { name: '🍜 Food', href: '/food' },
+  { name: '🎨 Studio', href: '/studio' },
+  { name: '📰 News', href: '/news' },
+  { name: '💼 Loker', href: '/loker' },
+  { name: '🛵 Ojex', href: '/ojex' },
+];
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 group">
+      <span class="text-2xl group-hover:scale-110 transition">🏠</span>
+      <span class="font-heading font-bold text-lg text-primary">MJ Home</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden lg:flex items-center gap-1">
+      {navItems.map(item => (
+        <a 
+          href={item.href} 
+          class="px-3 py-2 rounded-lg text-slate-600 hover:text-primary hover:bg-primary/5 transition font-medium text-sm"
+        >
+          {item.name}
+        </a>
+      ))}
+    </nav>
+
+    <!-- CTA + Mobile Menu -->
+    <div class="flex items-center gap-3">
+      <a 
+        href="https://wa.me/6281234567890" 
+        target="_blank"
+        class="hidden sm:flex items-center gap-2 btn-primary text-sm"
+      >
+        <span>💬</span> Chat Admin
+      </a>
+      <button id="menu-toggle" class="lg:hidden p-2 text-slate-600 hover:text-primary">
+        <span class="text-xl">☰</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t absolute w-full left-0">
+    {navItems.map(item => (
+      <a 
+        href={item.href} 
+        class="block px-4 py-3 text-slate-700 hover:bg-primary/5 hover:text-primary border-b border-slate-100"
+      >
+        {item.name}
+      </a>
+    ))}
+    <a 
+      href="https://wa.me/6281234567890" 
+      class="block px-4 py-3 text-center bg-primary text-white font-medium"
+    >
+      💬 Chat Admin
+    </a>
+  </div>
+</header>
+
+<script>
+  document.getElementById('menu-toggle')?.addEventListener('click', () => {
+    const menu = document.getElementById('mobile-menu');
+    menu?.classList.toggle('hidden');
+  });
+  
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('mobile-menu');
+    const toggle = document.getElementById('menu-toggle');
+    if (menu && !menu.contains(e.target) && !toggle?.contains(e.target)) {
+      menu.classList.add('hidden');
+    }
+  });
+</script>
