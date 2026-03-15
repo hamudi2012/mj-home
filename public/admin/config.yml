@@ -1,0 +1,68 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "shops"
+    label: "🛍️ MJ Shops"
+    folder: "src/data"
+    create: false
+    identifier_field: "slug"
+    files:
+      - file: "shops.json"
+        name: "products"
+        label: "Daftar Produk"
+        fields:
+          - { label: "ID", name: "id", widget: "number", required: true }
+          - { label: "Slug", name: "slug", widget: "string", required: true, hint: "URL-friendly, contoh: gamis-syari-premium" }
+          - { label: "Nama Produk", name: "nama", widget: "string", required: true }
+          - { label: "Harga Asli", name: "harga_asli", widget: "number", required: false, hint: "Kosongkan jika tidak ada diskon" }
+          - { label: "Harga Diskon", name: "harga_diskon", widget: "number", required: true }
+          - { label: "Kategori", name: "kategori", widget: "list", required: false }
+          - { label: "Ukuran", name: "ukuran", widget: "list", required: false }
+          - { label: "Warna", name: "warna", widget: "list", required: false }
+          - { label: "Stok", name: "stok", widget: "number", required: false }
+          - { label: "Deskripsi", name: "deskripsi", widget: "text", required: false }
+          - { label: "Foto URL", name: "foto", widget: "string", required: true }
+          - { label: "Rating", name: "rating", widget: "number", value_type: "float", required: false }
+          - { label: "Terjual", name: "terjual", widget: "number", required: false }
+
+  - name: "food"
+    label: "🍜 MJ Food"
+    folder: "src/data"
+    create: false
+    files:
+      - file: "food.json"
+        name: "menu"
+        label: "Menu Makanan"
+        fields:
+          - { label: "ID", name: "id", widget: "number" }
+          - { label: "Slug", name: "slug", widget: "string" }
+          - { label: "Nama Menu", name: "nama", widget: "string" }
+          - { label: "Harga", name: "harga", widget: "number" }
+          - { label: "Kategori", name: "kategori", widget: "list" }
+          - { label: "Deskripsi", name: "deskripsi", widget: "text" }
+          - { label: "Foto", name: "foto", widget: "string" }
+          - { label: "Tersedia", name: "tersedia", widget: "boolean" }
+          - { label: "Waktu Siap", name: "waktu_siap", widget: "string" }
+
+  - name: "ojex"
+    label: "🛵 MJ Ojex"
+    folder: "src/data"
+    create: false
+    files:
+      - file: "ojex.json"
+        name: "services"
+        label: "Layanan Antar"
+        fields:
+          - { label: "ID", name: "id", widget: "number" }
+          - { label: "Nama Layanan", name: "layanan", widget: "string" }
+          - { label: "Harga Dasar", name: "harga_dasar", widget: "number" }
+          - { label: "Harga per KM", name: "harga_per_km", widget: "number" }
+          - { label: "Estimasi", name: "estimasi", widget: "string" }
+          - { label: "Area", name: "area", widget: "list" }
+          - { label: "Keterangan", name: "keterangan", widget: "text" }
+          - { label: "Icon", name: "icon", widget: "string" }
