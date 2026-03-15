@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "slug": "nasi-goreng-special-mj",
+    "nama": "Nasi Goreng Special MJ",
+    "harga": 15000,
+    "kategori": ["makanan", "berat", "viral"],
+    "deskripsi": "Nasi goreng dengan telur mata sapi, ayam suwir, dan bumbu rahasia MJ. Pedas level bisa request!",
+    "foto": "/images/food/nasgor-special.jpg",
+    "tersedia": true,
+    "waktu_siap": "15-20 menit",
+    "area_kirim": ["Parungkuda", "Cibadak", "Sukabumi Kota"],
+    "rating": 4.8,
+    "terjual": 342
+  },
+  {
+    "id": 2,
+    "slug": "mie-ayam-jamur",
+    "nama": "Mie Ayam Jamur Tiram",
+    "harga": 12000,
+    "kategori": ["makanan", "mie", "sehat"],
+    "deskripsi": "Mie ayam dengan topping jamur tiram segar, kuah kaldu ayam asli, tanpa MSG.",
+    "foto": "/images/food/mie-ayam-jamur.jpg",
+    "tersedia": true,
+    "waktu_siap": "10-15 menit",
+    "area_kirim": ["Parungkuda"],
+    "rating": 4.6,
+    "terjual": 189
+  }
+]
