@@ -96,3 +96,164 @@
     "tags": ["nyaman", "all-day"]
   }
     ]
+
+[
+  {
+    "id": 1,
+    "slug": "gamis-syari-best-seller",
+    "nama": "Gamis Syar'i Best Seller",
+    "harga_asli": 300000,
+    "harga_diskon": 75000,
+    "kategori": ["muslimah", "gamis", "viral"],
+    "ukuran": ["M", "L", "XL", "XXL"],
+    "warna": ["Hitam", "Navy", "Maroon", "Sage"],
+    "stok": 15,
+    "deskripsi": "Bahan ceruty babydoll premium, adem seharian, jahitan butik rapi & kuat. Cocok untuk harian atau acara formal. Sudah termasuk inner dan brooch eksklusif.",
+    "foto": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&q=80",
+    "foto_gallery": [
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&q=80",
+      "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=800&q=80",
+      "https://images.unsplash.com/photo-1596783074918-c84cb06531ca?w=800&q=80"
+    ],
+    "rating": 4.9,
+    "terjual": 127,
+    "tags": ["best-seller", "free-ongkir", "diskon-75"]
+  },
+  {
+    "id": 2,
+    "slug": "outfit-harian-anak-perempuan",
+    "nama": "Outfit Harian Anak Perempuan",
+    "harga_asli": 120000,
+    "harga_diskon": 75000,
+    "kategori": ["anak", "perempuan", "harian"],
+    "ukuran": ["2-3Y", "4-5Y", "6-7Y", "8-9Y"],
+    "warna": ["Pink", "Purple", "Blue"],
+    "stok": 20,
+    "deskripsi": "Setelan nyaman untuk aktivitas sehari-hari, bahan katun lembut, mudah dicuci dan tidak luntur.",
+    "foto": "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=800&q=80",
+    "foto_gallery": [
+      "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=800&q=80",
+      "https://images.unsplash.com/photo-1519238263496-6362d74bb84d?w=800&q=80"
+    ],
+    "rating": 4.7,
+    "terjual": 89,
+    "tags": ["anak", "nyaman", "katun"]
+  },
+  {
+    "id": 3,
+    "slug": "jeans-murah-4in1",
+    "nama": "Jeans Termurah 4in1",
+    "harga_asli": 200000,
+    "harga_diskon": 150000,
+    "kategori": ["pria", "jeans", "best-value"],
+    "ukuran": ["28", "29", "30", "31", "32", "33", "34"],    "warna": ["Dark Blue", "Light Blue", "Black"],
+    "stok": 25,
+    "deskripsi": "Paket hemat 4 jeans dengan harga spesial! Bahan denim berkualitas, fit slim regular, nyaman dipakai seharian.",
+    "foto": "https://images.unsplash.com/photo-1542272617-08f08630329e?w=800&q=80",
+    "foto_gallery": [
+      "https://images.unsplash.com/photo-1542272617-08f08630329e?w=800&q=80",
+      "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800&q=80"
+    ],
+    "rating": 4.5,
+    "terjual": 203,
+    "tags": ["paket-hemat", "best-value", "lokal"]
+  },
+  {
+    "id": 4,
+    "slug": "sepatu-stylish-wanita",
+    "nama": "Sepatu Stylish Wanita",
+    "harga_asli": 120000,
+    "harga_diskon": 75000,
+    "kategori": ["wanita", "sepatu", "casual"],
+    "ukuran": ["36", "37", "38", "39", "40"],
+    "warna": ["White", "Black", "Beige"],
+    "stok": 30,
+    "deskripsi": "Sepatu casual nyaman untuk sehari-hari, sol empuk, desain minimalist elegan. Cocok untuk kuliah atau kerja.",
+    "foto": "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80",
+    "foto_gallery": [
+      "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80",
+      "https://images.unsplash.com/photo-1560343090-f0409e92791a?w=800&q=80"
+    ],
+    "rating": 4.7,
+    "terjual": 145,
+    "tags": ["nyaman", "all-day", "elegant"]
+  },
+  {
+    "id": 5,
+    "slug": "tas-wanita-premium",
+    "nama": "Tas Wanita Premium",
+    "harga_asli": 250000,
+    "harga_diskon": 125000,
+    "kategori": ["wanita", "tas", "premium"],
+    "ukuran": ["One Size"],
+    "warna": ["Black", "Brown", "Cream"],
+    "stok": 12,
+    "deskripsi": "Tas selempang wanita dengan bahan kulit sintetis premium, desain modern, cukup untuk HP, dompet, dan kosmetik.",
+    "foto": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&q=80",
+    "foto_gallery": [
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&q=80",
+      "https://images.unsplash.com/photo-1591561954557-26941169b49e?w=800&q=80"
+    ],
+    "rating": 4.8,
+    "terjual": 78,    "tags": ["premium", "trendy", "gift-worthy"]
+  },
+  {
+    "id": 6,
+    "slug": "kemeja-pria-kerja",
+    "nama": "Kemeja Pria Kerja",
+    "harga_asli": 180000,
+    "harga_diskon": 99000,
+    "kategori": ["pria", "kemeja", "kerja"],
+    "ukuran": ["M", "L", "XL", "XXL"],
+    "warna": ["White", "Blue", "Black", "Grey"],
+    "stok": 40,
+    "deskripsi": "Kemeja kerja pria dengan bahan katun premium, tidak mudah kusut, cocok untuk kantor atau acara formal.",
+    "foto": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=800&q=80",
+    "foto_gallery": [
+      "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=800&q=80",
+      "https://images.unsplash.com/photo-1620799140408-ed5341cd2431?w=800&q=80"
+    ],
+    "rating": 4.6,
+    "terjual": 156,
+    "tags": ["kerja", "formal", "premium"]
+  },
+  {
+    "id": 7,
+    "slug": "dress-muslimah-modern",
+    "nama": "Dress Muslimah Modern",
+    "harga_asli": 220000,
+    "harga_diskon": 110000,
+    "kategori": ["muslimah", "dress", "modern"],
+    "ukuran": ["M", "L", "XL"],
+    "warna": ["Dusty Pink", "Sage", "Cream", "Navy"],
+    "stok": 18,
+    "deskripsi": "Dress muslimah dengan desain modern, bahan flowy adem, cocok untuk berbagai occasion. Sudah termasuk inner.",
+    "foto": "https://images.unsplash.com/photo-1583391726247-bd744e68e6a5?w=800&q=80",
+    "foto_gallery": [
+      "https://images.unsplash.com/photo-1583391726247-bd744e68e6a5?w=800&q=80",
+      "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=800&q=80"
+    ],
+    "rating": 4.9,
+    "terjual": 92,
+    "tags": ["muslimah", "modern", "flowy"]
+  },
+  {
+    "id": 8,
+    "slug": "jaket-hoodie-unisex",
+    "nama": "Jaket Hoodie Unisex",
+    "harga_asli": 200000,
+    "harga_diskon": 89000,
+    "kategori": ["unisex", "jaket", "hoodie"],
+    "ukuran": ["M", "L", "XL", "XXL"],    "warna": ["Black", "Grey", "Navy", "Maroon"],
+    "stok": 35,
+    "deskripsi": "Hoodie unisex dengan bahan fleece tebal, hangat, cocok untuk cuaca dingin atau AC. Desain simple & nyaman.",
+    "foto": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&q=80",
+    "foto_gallery": [
+      "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&q=80",
+      "https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?w=800&q=80"
+    ],
+    "rating": 4.7,
+    "terjual": 234,
+    "tags": ["unisex", "hangat", "casual"]
+  }
+    ]
