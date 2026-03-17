@@ -17,19 +17,22 @@ collections:
         label: "Daftar Produk"
         fields:
           - { label: "ID", name: "id", widget: "number", required: true }
-          - { label: "Slug", name: "slug", widget: "string", required: true, hint: "URL-friendly, contoh: gamis-syari-premium" }
-          - { label: "Nama Produk", name: "nama", widget: "string", required: true }
-          - { label: "Harga Asli", name: "harga_asli", widget: "number", required: false, hint: "Kosongkan jika tidak ada diskon" }
-          - { label: "Harga Diskon", name: "harga_diskon", widget: "number", required: true }
-          - { label: "Kategori", name: "kategori", widget: "list", required: false }
-          - { label: "Ukuran", name: "ukuran", widget: "list", required: false }
-          - { label: "Warna", name: "warna", widget: "list", required: false }
-          - { label: "Stok", name: "stok", widget: "number", required: false }
-          - { label: "Deskripsi", name: "deskripsi", widget: "text", required: false }
-          - { label: "Foto URL", name: "foto", widget: "string", required: true }
-          - { label: "Rating", name: "rating", widget: "number", value_type: "float", required: false }
-          - { label: "Terjual", name: "terjual", widget: "number", required: false }
-
+           - { label: "ID", name: "id", widget: "number", required: false }
+      - { label: "Slug", name: "slug", widget: "string", hint: "Contoh: gamis-syari-best-seller" }
+      - { label: "Nama Produk", name: "nama", widget: "string", required: true }
+      - { label: "Harga Asli", name: "harga_asli", widget: "number", required: false }
+      - { label: "Harga Diskon", name: "harga_diskon", widget: "number", required: true }
+      - { label: "Kategori", name: "kategori", widget: "list", default: ["fashion"] }
+      - { label: "Ukuran", name: "ukuran", widget: "list", default: ["M", "L", "XL"] }
+      - { label: "Warna", name: "warna", widget: "list", default: ["Hitam"] }
+      - { label: "Stok", name: "stok", widget: "number", default: 10 }
+      - { label: "Deskripsi", name: "deskripsi", widget: "text" }
+      - { label: "Foto Utama", name: "foto", widget: "image" }
+      - { label: "Galeri", name: "foto_gallery", widget: "list", default: [] }
+      - { label: "Rating", name: "rating", widget: "number", default: 4.5, min: 0, max: 5 }
+      - { label: "Terjual", name: "terjual", widget: "number", default: 0 }
+      - { label: "Tags", name: "tags", widget: "list", default: ["new"] }
+ 
   - name: "food"
     label: "🍜 MJ Food"
     folder: "src/data"
