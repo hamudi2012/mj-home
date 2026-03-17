@@ -6,4 +6,7 @@ export default defineConfig({
   site: 'https://hamudi2012.github.io/mj-home/',
   integrations: [tailwind()],
   output: 'static',
+  build: {
+           inlineStylesheets: 'auto'
+           }
 });
