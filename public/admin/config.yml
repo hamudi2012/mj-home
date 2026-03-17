@@ -27,6 +27,6 @@ collections:
       - { label: "Deskripsi", name: "deskripsi", widget: "text" }
       - { label: "Foto Utama", name: "foto", widget: "image" }
       - { label: "Galeri", name: "foto_gallery", widget: "list", default: [] }
-      - { label: "Rating", name: "rating", widget: "number", default: 4.5, min: 0, max: 5 }
+      - { label: "Rating", name: "rating", widget: "number", default: 4.5 }
       - { label: "Terjual", name: "terjual", widget: "number", default: 0 }
       - { label: "Tags", name: "tags", widget: "list", default: ["new"] }
