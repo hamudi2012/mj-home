@@ -1,12 +1,55 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MJ Home Admin</title>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MJ Shops Admin</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-  <!-- Decap CMS will mount here -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <script>
+    // Inisialisasi CMS
+    CMS.init({
+      config: {
+        backend: {
+          name: 'git-gateway',
+          branch: 'main',
+          api_root: 'https://api.github.com/repos/hamudi2012/mj-home/git'
+        },
+        media_folder: 'public/images/products',
+        public_folder: '/mj-home/images/products',
+        collections: [
+          {
+            name: 'products',
+            label: 'Produk MJ Shops',
+            folder: 'src/data',
+            create: true,
+            slug: '{{slug}}',
+            extension: 'json',
+            format: 'json',
+            fields: [
+              { label: 'ID', name: 'id', widget: 'number', required: false },
+              { label: 'Slug', name: 'slug', widget: 'string', hint: 'Contoh: gamis-syari-best-seller' },
+              { label: 'Nama Produk', name: 'nama', widget: 'string' },
+              { label: 'Harga Asli', name: 'harga_asli', widget: 'number', hint: 'Harga coret (opsional)' },
+              { label: 'Harga Diskon', name: 'harga_diskon', widget: 'number' },
+              { label: 'Kategori', name: 'kategori', widget: 'list', default: ['fashion'] },
+              { label: 'Ukuran Tersedia', name: 'ukuran', widget: 'list', default: ['M', 'L', 'XL'] },
+              { label: 'Warna Tersedia', name: 'warna', widget: 'list', default: ['Hitam', 'Navy'] },
+              { label: 'Stok', name: 'stok', widget: 'number', default: 10 },
+              { label: 'Deskripsi', name: 'deskripsi', widget: 'text' },
+              { label: 'Foto Utama', name: 'foto', widget: 'image' },
+              { label: 'Galeri Foto', name: 'foto_gallery', widget: 'list', default: [] },
+              { label: 'Rating', name: 'rating', widget: 'number', default: 4.5, min: 0, max: 5 },
+              { label: 'Terjual', name: 'terjual', widget: 'number', default: 0 },
+              { label: 'Tags', name: 'tags', widget: 'list', default: ['new'] }
+            ]
+          }
+        ]
+      }
+    });
+  </script>
 </body>
 </html>
