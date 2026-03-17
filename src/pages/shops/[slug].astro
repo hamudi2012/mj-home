@@ -15,96 +15,143 @@ const { product } = Astro.props;
 const discount = product.harga_asli 
   ? Math.round((1 - product.harga_diskon / product.harga_asli) * 100) 
   : null;
+
+const relatedProducts = shops
+  .filter(p => p.id !== product.id && p.kategori?.some(cat => product.kategori?.includes(cat)))
+  .slice(0, 4);
 ---
 
 <Layout title={product.nama} description={product.deskripsi} image={product.foto}>
-  <section class="py-8 px-4">
-    <div class="max-w-4xl mx-auto">
-      <!-- Breadcrumb -->
-      <nav class="text-sm text-slate-500 mb-6">
-        <a href="/" class="hover:text-primary">Home</a> 
-        <span class="mx-2">/</span>
-        <a href="/shops" class="hover:text-primary">Shops</a> 
-        <span class="mx-2">/</span>
-        <span class="text-slate-800">{product.nama}</span>
-      </nav>
+  <!-- Breadcrumb -->
+  <nav class="bg-slate-50 py-4 px-4 border-b">
+    <div class="max-w-6xl mx-auto text-sm">
+      <a href="/" class="text-slate-500 hover:text-blue-600">Home</a>
+      <span class="mx-2 text-slate-300">/</span>
+      <a href="/shops" class="text-slate-500 hover:text-blue-600">Shops</a>
+      <span class="mx-2 text-slate-300">/</span>
+      <span class="text-slate-800 font-medium">{product.nama}</span>
+    </div>
+  </nav>
 
-      <!-- Product Detail -->
-      <div class="grid md:grid-cols-2 gap-8">
-        <!-- Image -->
-        <div class="card overflow-hidden">
-          <img 
-            src={product.foto} 
-            alt={product.nama}
-            class="w-full h-80 md:h-96 object-cover"
-          />
+  <!-- Product Detail -->
+  <section class="py-8 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+        <!-- Images -->
+        <div class="space-y-4">
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100">
+            <img 
+              src={product.foto} 
+              alt={product.nama}
+              class="w-full h-96 md:h-[500px] object-cover"
+            />
+          </div>
+          
+          {product.foto_gallery && product.foto_gallery.length > 1 && (            <div class="grid grid-cols-4 gap-2">
+              {product.foto_gallery.slice(0, 4).map((foto, i) => (
+                <div class="bg-white rounded-xl overflow-hidden border border-slate-100 cursor-pointer hover:border-blue-500 transition">
+                  <img src={foto} alt={`${product.nama} ${i+1}`} class="w-full h-20 object-cover" />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <!-- Info -->
-        <div>
-          {/* Badges */}
-          <div class="flex gap-2 mb-4">
+        <div class="space-y-6">
+          <!-- Badges -->
+          <div class="flex flex-wrap gap-2">
             {discount && discount >= 50 && (
-              <span class="bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full">
+              <span class="bg-gradient-to-r from-red-500 to-pink-500 text-white text-sm font-bold px-4 py-1.5 rounded-full">
                 Diskon {discount}%
-              </span>            )}
+              </span>
+            )}
             {product.stok && product.stok <= 5 && (
-              <span class="bg-orange-500 text-white text-sm font-bold px-3 py-1 rounded-full">
+              <span class="bg-gradient-to-r from-orange-500 to-amber-500 text-white text-sm font-bold px-4 py-1.5 rounded-full">
                 Stok Menipis!
               </span>
             )}
-          </div>
-
-          {/* Title */}
-          <h1 class="text-2xl font-heading font-bold text-slate-800 mb-3">
-            {product.nama}
-          </h1>
-
-          {/* Rating + Sold */}
-          {(product.rating || product.terjual) && (
-            <div class="flex items-center gap-4 text-sm text-slate-600 mb-4">
-              {product.rating && <span class="flex items-center gap-1">⭐ {product.rating} (4.9)</span>}
-              {product.terjual && <span>📦 {product.terjual} terjual</span>}
-            </div>
-          )}
-
-          {/* Price */}
-          <div class="flex items-baseline gap-3 mb-6">
-            <span class="text-3xl font-bold text-primary">
-              {formatRupiah(product.harga_diskon)}
-            </span>
-            {product.harga_asli && (
-              <span class="text-slate-400 text-lg line-through">
-                {formatRupiah(product.harga_asli)}
+            {product.tags?.includes('best-seller') && (
+              <span class="bg-gradient-to-r from-amber-500 to-yellow-500 text-white text-sm font-bold px-4 py-1.5 rounded-full">
+                🔥 Best Seller
+              </span>
+            )}
+            {product.tags?.includes('free-ongkir') && (
+              <span class="bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-bold px-4 py-1.5 rounded-full">
+                🚚 Free Ongkir
               </span>
             )}
           </div>
 
-          {/* Description */}
-          <div class="prose prose-sm text-slate-600 mb-6">
-            <p>{product.deskripsi}</p>
+          <!-- Title -->
+          <h1 class="text-2xl md:text-3xl font-bold text-slate-800">
+            {product.nama}
+          </h1>
+
+          <!-- Rating + Sold -->
+          {(product.rating || product.terjual) && (
+            <div class="flex items-center gap-4 text-sm">
+              {product.rating && (
+                <span class="flex items-center gap-1 text-amber-500">
+                  ⭐⭐⭐⭐⭐ {product.rating}
+                </span>
+              )}
+              {product.terjual && (                <span class="text-slate-500">📦 {product.terjual} terjual</span>
+              )}
+            </div>
+          )}
+
+          <!-- Price -->
+          <div class="bg-slate-50 rounded-2xl p-6">
+            <div class="flex items-baseline gap-3">
+              <span class="text-3xl font-bold text-blue-600">
+                {formatRupiah(product.harga_diskon)}
+              </span>
+              {product.harga_asli && (
+                <span class="text-slate-400 text-lg line-through">
+                  {formatRupiah(product.harga_asli)}
+                </span>
+              )}
+            </div>
+            {discount && (
+              <div class="text-green-600 text-sm font-medium mt-2">
+                Hemat {formatRupiah(product.harga_asli! - product.harga_diskon)}!
+              </div>
+            )}
           </div>
 
-          {/* Variants */}
+          <!-- Description -->
+          <div>
+            <h3 class="font-semibold text-slate-800 mb-3">Deskripsi Produk</h3>
+            <p class="text-slate-600 leading-relaxed">
+              {product.deskripsi}
+            </p>
+          </div>
+
+          <!-- Variants -->
           {(product.ukuran?.length || product.warna?.length) && (
-            <div class="mb-6">
+            <div class="space-y-4">
               {product.ukuran?.length > 0 && (
-                <div class="mb-4">
-                  <label class="block text-sm font-medium text-slate-700 mb-2">Ukuran:</label>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-2">
+                    Ukuran:
+                  </label>
                   <div class="flex flex-wrap gap-2">
                     {product.ukuran.map(size => (
-                      <button class="px-4 py-2 border border-slate-200 rounded-lg text-sm hover:border-primary hover:text-primary transition">
+                      <button class="size-btn px-4 py-2 border-2 border-slate-200 rounded-xl text-sm font-medium hover:border-blue-500 hover:text-blue-600 transition">
                         {size}
                       </button>
-                    ))}                  </div>
+                    ))}
+                  </div>
                 </div>
               )}
-              {product.warna?.length > 0 && (
-                <div>
-                  <label class="block text-sm font-medium text-slate-700 mb-2">Warna:</label>
+              {product.warna?.length > 0 && (                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-2">
+                    Warna:
+                  </label>
                   <div class="flex flex-wrap gap-2">
                     {product.warna.map(color => (
-                      <button class="px-4 py-2 border border-slate-200 rounded-lg text-sm hover:border-primary hover:text-primary transition">
+                      <button class="color-btn px-4 py-2 border-2 border-slate-200 rounded-xl text-sm font-medium hover:border-blue-500 hover:text-blue-600 transition">
                         {color}
                       </button>
                     ))}
@@ -114,36 +161,73 @@ const discount = product.harga_asli
             </div>
           )}
 
-          {/* CTA Buttons */}
-          <div class="flex flex-col sm:flex-row gap-3">
+          <!-- Stock -->
+          {product.stok && (
+            <div class="flex items-center gap-2 text-sm">
+              <span class="w-2 h-2 rounded-full bg-green-500"></span>
+              <span class="text-slate-600">Stok tersedia: {product.stok} pcs</span>
+            </div>
+          )}
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row gap-3 pt-4">
             <a 
-              href={createWaLink('shops', product)}
+              href={createWaLink(product)}
               target="_blank"
-              class="flex-1 btn-primary text-center py-3 font-semibold"
+              class="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold text-center py-4 rounded-xl transition shadow-lg shadow-blue-500/30 flex items-center justify-center gap-2"
             >
               💬 Pesan via WhatsApp
             </a>
-            <button class="flex-1 btn-outline py-3 font-semibold">
-              ♡ Tambah ke Wishlist
+            <button class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-4 rounded-xl transition flex items-center justify-center gap-2">
+              ♡ Simpan
             </button>
           </div>
 
-          {/* Trust Badges */}
-          <div class="grid grid-cols-3 gap-4 mt-8 pt-6 border-t">
+          <!-- Trust Badges -->
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t">
             <div class="text-center">
               <div class="text-2xl mb-1">🚚</div>
-              <div class="text-xs text-slate-500">Free Ongkir*</div>
+              <div class="text-xs text-slate-500">Pengiriman Cepat</div>
             </div>
             <div class="text-center">
               <div class="text-2xl mb-1">✅</div>
-              <div class="text-xs text-slate-500">Garansi Bahan</div>
+              <div class="text-xs text-slate-500">Produk Original</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl mb-1">💬</div>
-              <div class="text-xs text-slate-500">Respon Cepat</div>
+              <div class="text-2xl mb-1">💬</div>              <div class="text-xs text-slate-500">Respon Cepat</div>
             </div>
           </div>
         </div>
       </div>
-    </div>  </section>
+    </div>
+  </section>
+
+  <!-- Related Products -->
+  {relatedProducts.length > 0 && (
+    <section class="py-12 px-4 bg-slate-50">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-2xl font-bold text-slate-800 mb-8">Produk Serupa</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {relatedProducts.map(product => (
+            <ProductCard product={product} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 </Layout>
+
+<script>
+  // Size & Color selection
+  document.querySelectorAll('.size-btn, .color-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const parent = btn.parentElement;
+      parent.querySelectorAll('button').forEach(b => {
+        b.classList.remove('border-blue-500', 'text-blue-600', 'bg-blue-50');
+        b.classList.add('border-slate-200');
+      });
+      btn.classList.remove('border-slate-200');
+      btn.classList.add('border-blue-500', 'text-blue-600', 'bg-blue-50');
+    });
+  });
+</script>
