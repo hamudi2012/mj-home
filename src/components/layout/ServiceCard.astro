@@ -11,7 +11,7 @@ const { name, icon, desc, link, color } = Astro.props;
 ---
 
 <a 
-  href={link} 
+  href={`/mj-home${Astro.props.link}`} 
   class="block bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-md transition p-6 hover:-translate-y-1"
 >
   <div class={`w-14 h-14 rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center text-2xl mb-4`}>
