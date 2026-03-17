@@ -4,63 +4,166 @@ import ProductCard from '../../components/shops/ProductCard.astro';
 import shops from '../../data/shops.json';
 
 const categories = [...new Set(shops.flatMap(p => p.kategori))];
+const featuredProducts = shops.filter(p => p.tags?.includes('best-seller') || p.terjual >= 100);
 ---
 
 <Layout title="MJ Shops - Fashion Murah Sukabumi">
-  <section class="py-8 px-4 bg-slate-50">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white py-16 px-4">
+    <div class="max-w-6xl mx-auto text-center">
+      <span class="inline-block bg-blue-500/20 text-blue-300 text-sm font-medium px-4 py-2 rounded-full mb-4">
+        🛍️ Fashion Premium Harga Sahabat
+      </span>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        MJ <span class="text-blue-400">Shops</span>
+      </h1>
+      <p class="text-slate-300 text-lg max-w-2xl mx-auto mb-8">
+        Temukan fashion terbaik dengan harga terjangkau. Kualitas butik, harga bersahabat. Pengiriman area Sukabumi & sekitarnya.
+      </p>
+      
+      <!-- Stats -->
+      <div class="flex flex-wrap justify-center gap-8">
+        <div class="text-center">
+          <div class="text-3xl font-bold text-blue-400">{shops.length}+</div>
+          <div class="text-slate-400 text-sm">Produk</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-blue-400">4.8+</div>
+          <div class="text-slate-400 text-sm">Rating</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-blue-400">1000+</div>
+          <div class="text-slate-400 text-sm">Terjual</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="py-6 px-4 bg-white border-b sticky top-16 z-40 shadow-sm">
     <div class="max-w-6xl mx-auto">
-      <!-- Header -->
-      <div class="text-center mb-8">
-        <h1 class="text-3xl font-heading font-bold text-slate-800 mb-2">
-          🛍️ MJ Shops
-        </h1>
-        <p class="text-slate-600">Fashion premium harga sahabat, pengiriman area Sukabumi</p>
-      </div>
-
-      <!-- Filters -->
-      <div class="flex flex-wrap gap-2 mb-6 justify-center">
-        <button class="filter-btn active px-4 py-2 rounded-full bg-primary text-white text-sm font-medium">
-          Semua
-        </button>
-        {categories.map(cat => (
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="flex flex-wrap gap-2" id="category-filters">
           <button 
-            class="filter-btn px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-600 text-sm font-medium hover:border-primary hover:text-primary transition"
-            data-filter={cat}
-          >
-            {cat}
+            class="filter-btn active px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-medium transition"
+            data-filter="all"
+          >            Semua
           </button>
-        ))}
+          {categories.map(cat => (
+            <button 
+              class="filter-btn px-4 py-2 rounded-full bg-slate-100 text-slate-600 text-sm font-medium hover:bg-blue-100 hover:text-blue-600 transition"
+              data-filter={cat}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+        <div class="text-sm text-slate-500">
+          📦 {shops.length} Produk
+        </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Product Grid -->
+  <!-- Featured Products -->
+  {featuredProducts.length > 0 && (
+    <section class="py-12 px-4 bg-amber-50">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-800">🔥 Sedang Trending</h2>
+            <p class="text-slate-500 text-sm">Produk paling laris minggu ini</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {featuredProducts.map(product => (
+            <ProductCard product={product} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- All Products -->
+  <section class="py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-800">Semua Produk</h2>
+          <p class="text-slate-500 text-sm">Pilih yang cocok untuk kamu</p>
+        </div>
+      </div>
+      
       <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {shops.map(product => (
-          <ProductCard product={product} />
-        ))}
+          <ProductCard product={product} />        ))}
       </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="hidden text-center py-16">
+        <div class="text-6xl mb-4">🔍</div>
+        <h3 class="text-xl font-semibold text-slate-700 mb-2">Produk tidak ditemukan</h3>
+        <p class="text-slate-500">Coba kategori lain atau cek kembali nanti</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 px-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-2xl font-bold mb-4">Butuh Bantuan Memilih?</h2>
+      <p class="text-blue-100 mb-6">Tim kami siap membantu kamu menemukan produk yang tepat!</p>
+      <a 
+        href="https://wa.me/6281234567890" 
+        target="_blank"
+        class="inline-flex items-center gap-2 bg-white text-blue-600 font-bold px-8 py-3 rounded-xl hover:bg-blue-50 transition shadow-lg"
+      >
+        💬 Chat Admin Sekarang
+      </a>
     </div>
   </section>
 </Layout>
 
+<style>
+  .filter-btn.active {
+    background-color: rgb(37, 99, 235);
+    color: white;
+  }
+</style>
+
 <script>
-  // Simple client-side filter
+  // Filter functionality
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      // Remove active class from all
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active', 'bg-primary', 'text-white'));
-      // Add active to clicked
-      e.currentTarget.classList.add('active', 'bg-primary', 'text-white');
+      const target = e.currentTarget;
+      const filter = target.dataset.filter;
       
-      const filter = e.currentTarget.dataset.filter;
+      // Update active button
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('active', 'bg-blue-600', 'text-white');
+        b.classList.add('bg-slate-100', 'text-slate-600');
+      });
+      target.classList.remove('bg-slate-100', 'text-slate-600');
+      target.classList.add('active', 'bg-blue-600', 'text-white');
+            // Filter products
       const cards = document.querySelectorAll('#product-grid > div');
+      let visibleCount = 0;
       
       cards.forEach(card => {
-        if (!filter || card.innerHTML.toLowerCase().includes(filter.toLowerCase())) {
+        const cardText = card.innerHTML.toLowerCase();
+        if (filter === 'all' || cardText.includes(filter.toLowerCase())) {
           card.style.display = 'block';
+          visibleCount++;
         } else {
           card.style.display = 'none';
         }
       });
+      
+      // Show empty state if no products
+      const emptyState = document.getElementById('empty-state');
+      if (emptyState) {
+        emptyState.classList.toggle('hidden', visibleCount > 0);
+      }
     });
   });
 </script>
