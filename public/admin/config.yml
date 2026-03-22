@@ -40,36 +40,6 @@ collections:
       - { label: "Foto", name: "foto", widget: "image" }
       - { label: "Tersedia", name: "tersedia", widget: "boolean", default: true }
 
-  # MJ STUDIO
-  - name: "studio"
-    label: "🎨 MJ Studio - Jasa Kreatif"
-    folder: "src/data"
-    create: true
-    slug: "studio"
-    extension: json
-    format: json    fields:
-      - { label: "Nama Jasa", name: "nama", widget: "string" }
-      - { label: "Harga Mulai", name: "harga", widget: "number" }
-      - { label: "Kategori", name: "kategori", widget: "list", default: ["foto"] }
-      - { label: "Deskripsi", name: "deskripsi", widget: "text" }
-      - { label: "Foto Portfolio", name: "foto", widget: "image" }
-      - { label: "Durasi", name: "durasi", widget: "string", required: false }
-
-  # MJ WARUNG
-  - name: "warung"
-    label: " MJ Warung - Makanan"
-    folder: "src/data"
-    create: true
-    slug: "warung"
-    extension: json
-    format: json
-    fields:
-      - { label: "Nama Menu", name: "nama", widget: "string" }
-      - { label: "Harga", name: "harga", widget: "number" }
-      - { label: "Kategori", name: "kategori", widget: "list", default: ["makanan"] }
-      - { label: "Deskripsi", name: "deskripsi", widget: "text" }
-      - { label: "Foto", name: "foto", widget: "image" }
-
   # MJ NEWS
   - name: "news"
     label: "📰 MJ News - Berita"
