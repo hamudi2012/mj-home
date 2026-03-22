@@ -1,33 +1,31 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MJ Home Admin Panel</title>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <title>MJ Admin</title>
+  <link rel="stylesheet" href="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.css" />
 </head>
 <body>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
     CMS.init({
       config: {
         backend: {
           name: 'github',
-          repo: 'hamudi2012/mj-home', // Sudah diarahkan ke repo kamu
+          repo: 'hamudi2012/mj-home',
           branch: 'main',
-          auth_type: 'implicit' // Supaya bisa langsung masuk lewat token/login browser
+          auth_type: 'token' // Menggunakan token agar tidak layar putih/blank
         },
-        display_url: 'https://hamudi2012.github.io',
-        [span_1](start_span)media_folder: 'public/images/products',[span_1](end_span)
+        load_config_file: false, // Memaksa CMS pakai settingan di file ini saja
+        media_folder: 'public/images/products',
         public_folder: '/images/products',
-        
         collections: [
           {
             name: 'shops',
             label: '🛍️ MJ Shops',
             folder: 'src/data/shops',
             create: true,
-            slug: '{{slug}}',
-            extension: 'json',
             format: 'json',
             fields: [
               { label: 'Nama', name: 'nama', widget: 'string' },
@@ -40,83 +38,11 @@
             label: '🍜 MJ Food',
             folder: 'src/data/food',
             create: true,
-            slug: '{{slug}}',
-            extension: 'json',
             format: 'json',
             fields: [
               { label: 'Nama', name: 'nama', widget: 'string' },
               { label: 'Harga', name: 'harga', widget: 'number' },
               { label: 'Foto', name: 'foto', widget: 'image' }
-            ]
-          },
-          {
-            name: 'studio',
-            label: '🎨 MJ Studio',
-            folder: 'src/data/studio',
-            create: true,
-            slug: '{{slug}}',
-            extension: 'json',
-            format: 'json',
-            fields: [
-              { label: 'Nama', name: 'nama', widget: 'string' },
-              { label: 'Harga', name: 'harga', widget: 'number' },
-              { label: 'Foto', name: 'foto', widget: 'image' }
-            ]
-          },
-          {
-            name: 'warung',
-            label: '🏪 MJ Warung',
-            folder: 'src/data/warung',
-            create: true,
-            slug: '{{slug}}',
-            extension: 'json',
-            format: 'json',
-            fields: [
-              { label: 'Nama', name: 'nama', widget: 'string' },
-              { label: 'Harga', name: 'harga', widget: 'number' },
-              { label: 'Foto', name: 'foto', widget: 'image' }
-            ]
-          },
-          {
-            name: 'news',
-            label: '📰 MJ News',
-            folder: 'src/data/news',
-            create: true,
-            slug: '{{slug}}',
-            extension: 'json',
-            format: 'json',
-            fields: [
-              { label: 'Judul', name: 'judul', widget: 'string' },
-              { label: 'Konten', name: 'konten', widget: 'text' },
-              { label: 'Foto', name: 'foto', widget: 'image' }
-            ]
-          },
-          {
-            name: 'loker',
-            label: '💼 MJ Loker',
-            folder: 'src/data/loker',
-            create: true,
-            slug: '{{slug}}',
-            extension: 'json',
-            format: 'json',
-            fields: [
-              { label: 'Posisi', name: 'posisi', widget: 'string' },
-              { label: 'Perusahaan', name: 'perusahaan', widget: 'string' },
-              { label: 'Deskripsi', name: 'deskripsi', widget: 'text' }
-            ]
-          },
-          {
-            name: 'ojex',
-            label: '🛵 MJ Ojex',
-            folder: 'src/data/ojex',
-            create: true,
-            slug: '{{slug}}',
-            extension: 'json',
-            format: 'json',
-            fields: [
-              { label: 'Layanan', name: 'layanan', widget: 'string' },
-              { label: 'Harga', name: 'harga', widget: 'number' },
-              { label: 'Deskripsi', name: 'deskripsi', widget: 'text' }
             ]
           }
         ]
