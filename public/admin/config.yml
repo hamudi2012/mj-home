@@ -17,3 +17,4 @@ collections:
       - { label: "Nama", name: "nama", widget: "string" }
       - { label: "Harga", name: "harga_diskon", widget: "number" }
       - { label: "Foto", name: "foto", widget: "image" }
+ 
