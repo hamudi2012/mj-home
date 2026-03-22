@@ -1,6 +1,8 @@
 backend:
-  name: test-repo  # ← UBAH INI!
+  name: github
+  repo: hamudi2012/mj-home
   branch: main
+  auth_type: implicit # Menggunakan login GitHub langsung tanpa Netlify
 
 media_folder: public/images/products
 public_folder: images/products
@@ -8,7 +10,7 @@ public_folder: images/products
 collections:
   - name: "shops"
     label: "🛍️ MJ Shops"
-    folder: "src/data"
+    folder: "src/data/shops"
     create: true
     slug: "{{slug}}"
     extension: json
@@ -20,7 +22,7 @@ collections:
 
   - name: "food"
     label: "🍜 MJ Food"
-    folder: "src/data"
+    folder: "src/data/food"
     create: true
     slug: "{{slug}}"
     extension: json
@@ -32,7 +34,7 @@ collections:
 
   - name: "studio"
     label: "🎨 MJ Studio"
-    folder: "src/data"
+    folder: "src/data/studio"
     create: true
     slug: "{{slug}}"
     extension: json
@@ -44,7 +46,7 @@ collections:
 
   - name: "warung"
     label: "🏪 MJ Warung"
-    folder: "src/data"
+    folder: "src/data/warung"
     create: true
     slug: "{{slug}}"
     extension: json
@@ -56,7 +58,7 @@ collections:
 
   - name: "news"
     label: "📰 MJ News"
-    folder: "src/data"
+    folder: "src/data/news"
     create: true
     slug: "{{slug}}"
     extension: json
@@ -68,7 +70,7 @@ collections:
 
   - name: "loker"
     label: "💼 MJ Loker"
-    folder: "src/data"
+    folder: "src/data/loker"
     create: true
     slug: "{{slug}}"
     extension: json
@@ -80,7 +82,7 @@ collections:
 
   - name: "ojex"
     label: "🛵 MJ Ojex"
-    folder: "src/data"
+    folder: "src/data/ojex"
     create: true
     slug: "{{slug}}"
     extension: json
@@ -89,3 +91,4 @@ collections:
       - { label: "Layanan", name: "layanan", widget: "string" }
       - { label: "Harga", name: "harga", widget: "number" }
       - { label: "Deskripsi", name: "deskripsi", widget: "text" }
+      
