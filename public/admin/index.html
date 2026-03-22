@@ -11,16 +11,20 @@
     CMS.init({
       config: {
         backend: {
-          name: 'test-repo',
-          branch: 'main'
+          name: 'github',
+          repo: 'hamudi2012/mj-home', // Sudah diarahkan ke repo kamu
+          branch: 'main',
+          auth_type: 'implicit' // Supaya bisa langsung masuk lewat token/login browser
         },
-        media_folder: 'public/images/products',
-        public_folder: '/mj-home/images/products',
+        display_url: 'https://hamudi2012.github.io',
+        [span_1](start_span)media_folder: 'public/images/products',[span_1](end_span)
+        public_folder: '/images/products',
+        
         collections: [
           {
             name: 'shops',
             label: '🛍️ MJ Shops',
-            folder: 'src/data',
+            folder: 'src/data/shops',
             create: true,
             slug: '{{slug}}',
             extension: 'json',
@@ -34,7 +38,7 @@
           {
             name: 'food',
             label: '🍜 MJ Food',
-            folder: 'src/data',
+            folder: 'src/data/food',
             create: true,
             slug: '{{slug}}',
             extension: 'json',
@@ -47,7 +51,8 @@
           },
           {
             name: 'studio',
-            label: '🎨 MJ Studio',            folder: 'src/data',
+            label: '🎨 MJ Studio',
+            folder: 'src/data/studio',
             create: true,
             slug: '{{slug}}',
             extension: 'json',
@@ -61,7 +66,7 @@
           {
             name: 'warung',
             label: '🏪 MJ Warung',
-            folder: 'src/data',
+            folder: 'src/data/warung',
             create: true,
             slug: '{{slug}}',
             extension: 'json',
@@ -75,7 +80,7 @@
           {
             name: 'news',
             label: '📰 MJ News',
-            folder: 'src/data',
+            folder: 'src/data/news',
             create: true,
             slug: '{{slug}}',
             extension: 'json',
@@ -89,20 +94,21 @@
           {
             name: 'loker',
             label: '💼 MJ Loker',
-            folder: 'src/data',
+            folder: 'src/data/loker',
             create: true,
             slug: '{{slug}}',
             extension: 'json',
             format: 'json',
             fields: [
               { label: 'Posisi', name: 'posisi', widget: 'string' },
-              { label: 'Perusahaan', name: 'perusahaan', widget: 'string' },              { label: 'Deskripsi', name: 'deskripsi', widget: 'text' }
+              { label: 'Perusahaan', name: 'perusahaan', widget: 'string' },
+              { label: 'Deskripsi', name: 'deskripsi', widget: 'text' }
             ]
           },
           {
             name: 'ojex',
             label: '🛵 MJ Ojex',
-            folder: 'src/data',
+            folder: 'src/data/ojex',
             create: true,
             slug: '{{slug}}',
             extension: 'json',
