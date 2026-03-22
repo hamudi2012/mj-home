@@ -6,80 +6,26 @@ media_folder: public/images/products
 public_folder: /mj-home/images/products
 
 collections:
-  # MJ SHOPS
   - name: "shops"
-    label: "🛍️ MJ Shops - Produk"
+    label: "MJ Shops"
     folder: "src/data"
     create: true
     slug: "shops"
     extension: json
     format: json
     fields:
-      - { label: "Nama Produk", name: "nama", widget: "string" }
-      - { label: "Harga Asli", name: "harga_asli", widget: "number", required: false }
-      - { label: "Harga Diskon", name: "harga_diskon", widget: "number" }
-      - { label: "Kategori", name: "kategori", widget: "list", default: ["fashion"] }
-      - { label: "Deskripsi", name: "deskripsi", widget: "text" }
+      - { label: "Nama", name: "nama", widget: "string" }
+      - { label: "Harga", name: "harga_diskon", widget: "number" }
       - { label: "Foto", name: "foto", widget: "image" }
-      - { label: "Stok", name: "stok", widget: "number", default: 10 }
-      - { label: "Rating", name: "rating", widget: "number", default: 4.5 }
 
-  # MJ FOOD
   - name: "food"
-    label: "🍜 MJ Food - Kuliner"
+    label: "MJ Food"
     folder: "src/data"
     create: true
     slug: "food"
     extension: json
     format: json
     fields:
-      - { label: "Nama Makanan", name: "nama", widget: "string" }
+      - { label: "Nama", name: "nama", widget: "string" }
       - { label: "Harga", name: "harga", widget: "number" }
-      - { label: "Kategori", name: "kategori", widget: "list", default: ["makanan"] }
-      - { label: "Deskripsi", name: "deskripsi", widget: "text" }
       - { label: "Foto", name: "foto", widget: "image" }
-      - { label: "Tersedia", name: "tersedia", widget: "boolean", default: true }
-
-  # MJ NEWS
-  - name: "news"
-    label: "📰 MJ News - Berita"
-    folder: "src/data"
-    create: true
-    slug: "news"
-    extension: json
-    format: json
-    fields:
-      - { label: "Judul Berita", name: "judul", widget: "string" }
-      - { label: "Konten", name: "konten", widget: "text" }
-      - { label: "Kategori", name: "kategori", widget: "list", default: ["lokal"] }
-      - { label: "Foto", name: "foto", widget: "image" }
-      - { label: "Tanggal", name: "tanggal", widget: "datetime" }
-
-  # MJ LOKER
-  - name: "loker"
-    label: "💼 MJ Loker - Lowongan"
-    folder: "src/data"
-    create: true
-    slug: "loker"
-    extension: json
-    format: json
-    fields:
-      - { label: "Posisi", name: "posisi", widget: "string" }
-      - { label: "Perusahaan", name: "perusahaan", widget: "string" }
-      - { label: "Lokasi", name: "lokasi", widget: "string" }      - { label: "Gaji", name: "gaji", widget: "string", required: false }
-      - { label: "Deskripsi", name: "deskripsi", widget: "text" }
-      - { label: "Deadline", name: "deadline", widget: "datetime" }
-
-  # MJ OJEX
-  - name: "ojex"
-    label: "🛵 MJ Ojex - Layanan Antar"
-    folder: "src/data"
-    create: true
-    slug: "ojex"
-    extension: json
-    format: json
-    fields:
-      - { label: "Layanan", name: "layanan", widget: "string" }
-      - { label: "Harga", name: "harga", widget: "number" }
-      - { label: "Area", name: "area", widget: "string" }
-      - { label: "Deskripsi", name: "deskripsi", widget: "text" }
