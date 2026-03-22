@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MJ Shops Admin</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
@@ -10,16 +10,16 @@
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   
   <script>
-    // Inisialisasi CMS
     CMS.init({
       config: {
         backend: {
           name: 'git-gateway',
-          branch: 'main',
-          api_root: 'https://api.github.com/repos/hamudi2012/mj-home/git'
+          branch: 'main' // Hapus api_root agar otomatis menggunakan Git Gateway Netlify
         },
+        // Sesuaikan path folder dengan struktur repo kamu
         media_folder: 'public/images/products',
-        public_folder: '/mj-home/images/products',
+        public_folder: '/images/products',
+        
         collections: [
           {
             name: 'products',
@@ -30,29 +30,45 @@
             extension: 'json',
             format: 'json',
             fields: [
-              { label: 'ID', name: 'id', widget: 'number', required: false },
-              { label: 'Slug', name: 'slug', widget: 'string', hint: 'Contoh: gamis-syari-best-seller' },
               { label: 'Nama Produk', name: 'nama', widget: 'string' },
-              { label: 'Harga Asli', name: 'harga_asli', widget: 'number', hint: 'Harga coret (opsional)' },
+              { label: 'Slug/URL', name: 'slug', widget: 'string', hint: 'Contoh: gamis-syari' },
+              { label: 'Harga Asli', name: 'harga_asli', widget: 'number', required: false },
               { label: 'Harga Diskon', name: 'harga_diskon', widget: 'number' },
-              { label: 'Kategori', name: 'kategori', widget: 'list', default: ['fashion'] },
-              { label: 'Ukuran Tersedia', name: 'ukuran', widget: 'list', default: ['M', 'L', 'XL'] },
-              { label: 'Warna Tersedia', name: 'warna', widget: 'list', default: ['Hitam', 'Navy'] },
+              { 
+                label: 'Kategori', 
+                name: 'kategori', 
+                widget: 'select', 
+                options: ['Fashion', 'Food', 'Electronics', 'Lainnya'] 
+              },
               { label: 'Stok', name: 'stok', widget: 'number', default: 10 },
               { label: 'Deskripsi', name: 'deskripsi', widget: 'text' },
               { label: 'Foto Utama', name: 'foto', widget: 'image' },
-              { label: 'Galeri Foto', name: 'foto_gallery', widget: 'list', default: [] },
-              { label: 'Rating', name: 'rating', widget: 'number', default: 4.5, min: 0, max: 5 },
-              { label: 'Terjual', name: 'terjual', widget: 'number', default: 0 },
-              { label: 'Tags', name: 'tags', widget: 'list', default: ['new'] }
+              { 
+                label: 'Rating', 
+                name: 'rating', 
+                widget: 'number', 
+                default: 5, 
+                value_type: 'float',
+                min: 1, 
+                max: 5 
+              },
+              { label: 'Terjual', name: 'terjual', widget: 'number', default: 0 }
             ]
           }
         ]
       }
     });
+
+    // Script agar otomatis redirect setelah login di HP
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
   </script>
-
-
-
 </body>
 </html>
