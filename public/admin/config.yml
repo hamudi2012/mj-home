@@ -1,20 +1,115 @@
 backend:
-  name: test-repo
+  name: git-gateway
   branch: main
 
-media_folder: public/images
-public_folder: /mj-home/images
+media_folder: public/images/uploads
+public_folder: /mj-home/images/uploads
 
 collections:
-  - name: "products"
-    label: "Produk MJ Shops"
+  # MJ SHOPS
+  - name: "shops"
+    label: "🛍️ MJ Shops - Produk"
     folder: "src/data"
     create: true
-    slug: "{{slug}}"
+    slug: "shops"
     extension: json
     format: json
     fields:
-      - { label: "Nama", name: "nama", widget: "string" }
-      - { label: "Harga", name: "harga_diskon", widget: "number" }
+      - { label: "Nama Produk", name: "nama", widget: "string" }
+      - { label: "Harga Asli", name: "harga_asli", widget: "number", required: false }
+      - { label: "Harga Diskon", name: "harga_diskon", widget: "number" }
+      - { label: "Kategori", name: "kategori", widget: "list", default: ["fashion"] }
+      - { label: "Deskripsi", name: "deskripsi", widget: "text" }
       - { label: "Foto", name: "foto", widget: "image" }
- 
+      - { label: "Stok", name: "stok", widget: "number", default: 10 }
+      - { label: "Rating", name: "rating", widget: "number", default: 4.5 }
+
+  # MJ FOOD
+  - name: "food"
+    label: "🍜 MJ Food - Kuliner"
+    folder: "src/data"
+    create: true
+    slug: "food"
+    extension: json
+    format: json
+    fields:
+      - { label: "Nama Makanan", name: "nama", widget: "string" }
+      - { label: "Harga", name: "harga", widget: "number" }
+      - { label: "Kategori", name: "kategori", widget: "list", default: ["makanan"] }
+      - { label: "Deskripsi", name: "deskripsi", widget: "text" }
+      - { label: "Foto", name: "foto", widget: "image" }
+      - { label: "Tersedia", name: "tersedia", widget: "boolean", default: true }
+
+  # MJ STUDIO
+  - name: "studio"
+    label: "🎨 MJ Studio - Jasa Kreatif"
+    folder: "src/data"
+    create: true
+    slug: "studio"
+    extension: json
+    format: json    fields:
+      - { label: "Nama Jasa", name: "nama", widget: "string" }
+      - { label: "Harga Mulai", name: "harga", widget: "number" }
+      - { label: "Kategori", name: "kategori", widget: "list", default: ["foto"] }
+      - { label: "Deskripsi", name: "deskripsi", widget: "text" }
+      - { label: "Foto Portfolio", name: "foto", widget: "image" }
+      - { label: "Durasi", name: "durasi", widget: "string", required: false }
+
+  # MJ WARUNG
+  - name: "warung"
+    label: " MJ Warung - Makanan"
+    folder: "src/data"
+    create: true
+    slug: "warung"
+    extension: json
+    format: json
+    fields:
+      - { label: "Nama Menu", name: "nama", widget: "string" }
+      - { label: "Harga", name: "harga", widget: "number" }
+      - { label: "Kategori", name: "kategori", widget: "list", default: ["makanan"] }
+      - { label: "Deskripsi", name: "deskripsi", widget: "text" }
+      - { label: "Foto", name: "foto", widget: "image" }
+
+  # MJ NEWS
+  - name: "news"
+    label: "📰 MJ News - Berita"
+    folder: "src/data"
+    create: true
+    slug: "news"
+    extension: json
+    format: json
+    fields:
+      - { label: "Judul Berita", name: "judul", widget: "string" }
+      - { label: "Konten", name: "konten", widget: "text" }
+      - { label: "Kategori", name: "kategori", widget: "list", default: ["lokal"] }
+      - { label: "Foto", name: "foto", widget: "image" }
+      - { label: "Tanggal", name: "tanggal", widget: "datetime" }
+
+  # MJ LOKER
+  - name: "loker"
+    label: "💼 MJ Loker - Lowongan"
+    folder: "src/data"
+    create: true
+    slug: "loker"
+    extension: json
+    format: json
+    fields:
+      - { label: "Posisi", name: "posisi", widget: "string" }
+      - { label: "Perusahaan", name: "perusahaan", widget: "string" }
+      - { label: "Lokasi", name: "lokasi", widget: "string" }      - { label: "Gaji", name: "gaji", widget: "string", required: false }
+      - { label: "Deskripsi", name: "deskripsi", widget: "text" }
+      - { label: "Deadline", name: "deadline", widget: "datetime" }
+
+  # MJ OJEX
+  - name: "ojex"
+    label: "🛵 MJ Ojex - Layanan Antar"
+    folder: "src/data"
+    create: true
+    slug: "ojex"
+    extension: json
+    format: json
+    fields:
+      - { label: "Layanan", name: "layanan", widget: "string" }
+      - { label: "Harga", name: "harga", widget: "number" }
+      - { label: "Area", name: "area", widget: "string" }
+      - { label: "Deskripsi", name: "deskripsi", widget: "text" }
