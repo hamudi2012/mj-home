@@ -1,43 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MJ Shops Admin - Direct Access</title>
+  <title>MJ Home Admin Panel</title>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  
   <script>
     CMS.init({
       config: {
-        // Menggunakan backend 'github' langsung tanpa gateway
         backend: {
-          name: 'github',
-          repo: 'hamudi2012/mj-home', // Nama repo kamu
-          branch: 'main',
-          auth_type: 'token' // Menggunakan Token agar tidak perlu login Netlify
+          name: 'test-repo',
+          branch: 'main'
         },
-        
         media_folder: 'public/images/products',
-        public_folder: '/images/products',
-        
+        public_folder: '/mj-home/images/products',
         collections: [
           {
-            name: 'products',
-            label: 'Produk MJ Shops',
+            name: 'shops',
+            label: '🛍️ MJ Shops',
             folder: 'src/data',
             create: true,
             slug: '{{slug}}',
             extension: 'json',
             format: 'json',
             fields: [
-              { label: 'Nama Produk', name: 'nama', widget: 'string' },
-              { label: 'Slug/URL', name: 'slug', widget: 'string' },
-              { label: 'Harga Diskon', name: 'harga_diskon', widget: 'number' },
-              { label: 'Stok', name: 'stok', widget: 'number', default: 10 },
-              { label: 'Deskripsi', name: 'deskripsi', widget: 'text' },
-              { label: 'Foto Utama', name: 'foto', widget: 'image' }
+              { label: 'Nama', name: 'nama', widget: 'string' },
+              { label: 'Harga', name: 'harga_diskon', widget: 'number' },
+              { label: 'Foto', name: 'foto', widget: 'image' }
+            ]
+          },
+          {
+            name: 'food',
+            label: '🍜 MJ Food',
+            folder: 'src/data',
+            create: true,
+            slug: '{{slug}}',
+            extension: 'json',
+            format: 'json',
+            fields: [
+              { label: 'Nama', name: 'nama', widget: 'string' },
+              { label: 'Harga', name: 'harga', widget: 'number' },
+              { label: 'Foto', name: 'foto', widget: 'image' }
+            ]
+          },
+          {
+            name: 'studio',
+            label: '🎨 MJ Studio',            folder: 'src/data',
+            create: true,
+            slug: '{{slug}}',
+            extension: 'json',
+            format: 'json',
+            fields: [
+              { label: 'Nama', name: 'nama', widget: 'string' },
+              { label: 'Harga', name: 'harga', widget: 'number' },
+              { label: 'Foto', name: 'foto', widget: 'image' }
+            ]
+          },
+          {
+            name: 'warung',
+            label: '🏪 MJ Warung',
+            folder: 'src/data',
+            create: true,
+            slug: '{{slug}}',
+            extension: 'json',
+            format: 'json',
+            fields: [
+              { label: 'Nama', name: 'nama', widget: 'string' },
+              { label: 'Harga', name: 'harga', widget: 'number' },
+              { label: 'Foto', name: 'foto', widget: 'image' }
+            ]
+          },
+          {
+            name: 'news',
+            label: '📰 MJ News',
+            folder: 'src/data',
+            create: true,
+            slug: '{{slug}}',
+            extension: 'json',
+            format: 'json',
+            fields: [
+              { label: 'Judul', name: 'judul', widget: 'string' },
+              { label: 'Konten', name: 'konten', widget: 'text' },
+              { label: 'Foto', name: 'foto', widget: 'image' }
+            ]
+          },
+          {
+            name: 'loker',
+            label: '💼 MJ Loker',
+            folder: 'src/data',
+            create: true,
+            slug: '{{slug}}',
+            extension: 'json',
+            format: 'json',
+            fields: [
+              { label: 'Posisi', name: 'posisi', widget: 'string' },
+              { label: 'Perusahaan', name: 'perusahaan', widget: 'string' },              { label: 'Deskripsi', name: 'deskripsi', widget: 'text' }
+            ]
+          },
+          {
+            name: 'ojex',
+            label: '🛵 MJ Ojex',
+            folder: 'src/data',
+            create: true,
+            slug: '{{slug}}',
+            extension: 'json',
+            format: 'json',
+            fields: [
+              { label: 'Layanan', name: 'layanan', widget: 'string' },
+              { label: 'Harga', name: 'harga', widget: 'number' },
+              { label: 'Deskripsi', name: 'deskripsi', widget: 'text' }
             ]
           }
         ]
