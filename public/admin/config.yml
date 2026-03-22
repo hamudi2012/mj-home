@@ -2,8 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: public/images/uploads
-public_folder: /mj-home/images/uploads
+media_folder: public/images/products
+public_folder: /mj-home/images/products
 
 collections:
   # MJ SHOPS
