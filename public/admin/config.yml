@@ -2,15 +2,16 @@ backend:
   name: git-gateway
   branch: main
 
+# Folder penyimpanan gambar disesuaikan dengan struktur repo kamu
 media_folder: public/images/products
-public_folder: /mj-home/images/products
+public_folder: images/products
 
 collections:
   - name: "shops"
     label: "MJ Shops"
     folder: "src/data"
     create: true
-    slug: "shops"
+    slug: "{{slug}}"
     extension: json
     format: json
     fields:
@@ -22,10 +23,11 @@ collections:
     label: "MJ Food"
     folder: "src/data"
     create: true
-    slug: "food"
+    slug: "{{slug}}"
     extension: json
     format: json
     fields:
       - { label: "Nama", name: "nama", widget: "string" }
       - { label: "Harga", name: "harga", widget: "number" }
       - { label: "Foto", name: "foto", widget: "image" }
+      
