@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MJ Admin</title>
-  <link rel="stylesheet" href="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.css" />
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
@@ -15,9 +14,9 @@
           name: 'github',
           repo: 'hamudi2012/mj-home',
           branch: 'main',
-          auth_type: 'token' // Menggunakan token agar tidak layar putih/blank
+          auth_type: 'token' 
         },
-        load_config_file: false, // Memaksa CMS pakai settingan di file ini saja
+        load_config_file: false, // Memaksa mengabaikan file config.yml jika masih ada error di sana
         media_folder: 'public/images/products',
         public_folder: '/images/products',
         collections: [
@@ -25,18 +24,6 @@
             name: 'shops',
             label: '🛍️ MJ Shops',
             folder: 'src/data/shops',
-            create: true,
-            format: 'json',
-            fields: [
-              { label: 'Nama', name: 'nama', widget: 'string' },
-              { label: 'Harga', name: 'harga_diskon', widget: 'number' },
-              { label: 'Foto', name: 'foto', widget: 'image' }
-            ]
-          },
-          {
-            name: 'food',
-            label: '🍜 MJ Food',
-            folder: 'src/data/food',
             create: true,
             format: 'json',
             fields: [
